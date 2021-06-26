@@ -1,38 +1,50 @@
 def flip_case(phrase, to_swap):
     """Flip [to_swap] case each time it appears in phrase. >>> flip_case('Aaaahhh', 'a') 'aAAAhhh'  >>> flip_case('Aaaahhh', 'A') 'aAAAhhh'
  >>> flip_case('Aaaahhh', 'h') 'AaaaHHH'    """
-
+    new_string=""
+    compare = to_swap.upper()
+    
+    for char in phrase:
+        if char.upper() == compare:
+            char = char.swapcase()
+        new_string += char
+    print(new_string)
     
 def multiply_even_numbers(nums):
     """Multiply the even numbers. >>> multiply_even_numbers([2, 3, 4, 5, 6]) 48 >>> multiply_even_numbers([3, 4, 5]) 4 
     If there are no even numbers, return 1. >>> multiply_even_numbers([1, 3, 5]) 1 """
+    total = 1
+    for num in nums:
+        if num % 2 == 0:
+            total = total * num
+
+    return total
 
 def capitalize(phrase):
  """Capitalize first letter of first word of phrase. >>> capitalize('python') 'Python' >>> capitalize('only first word') 'Only first word' """
-
+    x = phrase.capitalize()
+    print(x)
+    
 def compact(lst):
     """Return a copy of lst with non-true elements removed.
-
-        >>> compact([0, 1, 2, '', [], False, (), None, 'All done'])
-        [1, 2, 'All done']
+ >>> compact([0, 1, 2, '', [], False, (), None, 'All done']) [1, 2, 'All done']
     """
+    newlist = []
+
+    for x in lst:
+        if bool(x) is not False:  #is not runs faster than == or != 
+            newlist.append(x)
+
+    print(newlist)
+    
     
 def intersection(l1, l2):
-    """Return intersection of two lists as a new list::
-    
-        >>> intersection([1, 2, 3], [2, 3, 4])
-        [2, 3]
-        
-        >>> intersection([1, 2, 3], [1, 2, 3, 4])
-        [1, 2, 3]
-        
-        >>> intersection([1, 2, 3], [3, 4])
-        [3]
-        
-        >>> intersection([1, 2, 3], [4, 5, 6])
-        []
-    """
+    """Return intersection of two lists as a new list::  >>> intersection([1, 2, 3], [2, 3, 4]) [2, 3] >>> intersection([1, 2, 3], [1, 2, 3, 4])
+ [1, 2, 3] >>> intersection([1, 2, 3], [3, 4])[3]  >>> intersection([1, 2, 3], [4, 5, 6]) []"""
+    z = set(l1).intersection(set(l2))
+    return z
 
+    
 def partition(lst, fn):
     """Partition lst by predicate.
      
