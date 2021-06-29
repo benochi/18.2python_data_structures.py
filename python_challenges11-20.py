@@ -100,20 +100,19 @@ def calculate(operation, a, b, make_int=False, message='The result is'):
     - a: friend #1, a tuple of (name, age, list-of-hobbies) - b: same, for friend #2 Returns True if they have any hobbies in common, False is not.
         >>> elmo = ('Elmo', 5, ['hugging', 'being nice']) >>> sauron = ('Sauron', 5000, ['killing hobbits', 'chess']) >>> gandalf = ('Gandalf', 10000, ['waving wands', 'chess'])
         >>> friend_date(elmo, sauron) False  >>> friend_date(sauron, gandalf) True """
-    
+        if set(a[2]) & set(b[2]):
+            return True
+        else:
+            return False
     
     
     def triple_and_filter(nums):
-    """Return new list of tripled nums for those nums divisible by 4. Return every number in list that is divisible by 4 in a new list, except multipled by 3.
-    
-        >>> triple_and_filter([1, 2, 3, 4])
-        [12]
+    """Return new list of tripled nums for those nums divisible by 4. Return every number in list that is divisible by 4 in a new list, except multipled by 3.   
+        >>> triple_and_filter([1, 2, 3, 4]) [12] >>> triple_and_filter([6, 8, 10, 12]) [24, 36] >>> triple_and_filter([1, 2]) [] """
+        new_list = []
+        for i in nums:
+            if i % 4 == 0:
+                new_list.append(i * 3)
+        print(new_list)
         
-        >>> triple_and_filter([6, 8, 10, 12])
-        [24, 36]
-        
-        >>> triple_and_filter([1, 2])
-        []
-    """
-
     
